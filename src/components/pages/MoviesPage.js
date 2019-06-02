@@ -6,7 +6,7 @@ import {fetchMovies} from '../../actions/movies'
 
 class MoviesPage extends Component {
     static propTypes = {
-        movies: PropTypes.array.isRequired
+        movies: PropTypes.object.isRequired
     };
 
     componentDidMount() {
@@ -16,7 +16,7 @@ class MoviesPage extends Component {
     render() {
         return (
             <div>
-                <h2>Movies Pages</h2>
+                <h2>Movies</h2>
                 <MoviesList movies={this.props.movies}/>
             </div>
         );

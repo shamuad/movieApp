@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Image, Menu, Visibility} from "semantic-ui-react";
 import {fixedMenuStyle, menuStyle} from "../helpers/styleHelper";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 class Header extends Component {
     state = {
@@ -27,16 +27,16 @@ class Header extends Component {
                         style={ menuFixed ? fixedMenuStyle : menuStyle }
                     >
                         <Container text>
-                            <Menu.Item>
+                            <Menu.Item as={ Link } to="/" exact="true">
                                 <Image size='mini'
                                        src='http://www.myiconfinder.com/uploads/iconsets/48-48-0b750fa07b31429a05dd3ec0abd2c7af.png'/>
+                                <Menu.Item header>MovieApp</Menu.Item>
                             </Menu.Item>
-                            <Menu.Item header>MovieApp</Menu.Item>
-                            <Menu.Item as={ Link } to="/movies">
+                            <Menu.Item as={ NavLink } to="/movies" exact>
                                 Movies
                             </Menu.Item>
-                            <Menu.Item as='a'>Add New</Menu.Item>
-
+                            <Menu.Item as={ NavLink } to="/movies/new">
+                                Add New</Menu.Item>
                         </Container>
                     </Menu>
                 </Visibility>
