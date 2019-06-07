@@ -4,7 +4,7 @@ import MovieCard from './MovieCard';
 import {Grid} from 'semantic-ui-react';
 import {GridLoader} from 'react-spinners';
 
-const MoviesList = ({movies}) => {
+const MoviesList = ({movies, deleteMovie}) => {
 
     const emptyMessage = (
         <p>There are no movies yet.</p>
@@ -14,9 +14,9 @@ const MoviesList = ({movies}) => {
         <div>
 
             <GridLoader
-                size={15}
-                color={'#1075ef'}
-                loading={movies.fetching}
+                size={ 15 }
+                color={ '#1075ef' }
+                loading={ movies.fetching }
             />
 
             {
@@ -25,7 +25,12 @@ const MoviesList = ({movies}) => {
                     :
                     <Grid stackable columns={ 3 }>
                         {
-                            movies.movies.map(movie => <MovieCard key={ movie._id } movie={ movie }/>)
+                            movies.movieList.map(movie =>
+                                <MovieCard
+                                    key={ movie._id }
+                                    deleteMovie={deleteMovie}
+                                    movie={ movie }/>
+                            )
                         }
                     </Grid>
             }
@@ -41,7 +46,7 @@ const MoviesList = ({movies}) => {
 
 MoviesList.propTypes = {
     movies: PropTypes.shape({
-        movies: PropTypes.array.isRequired
+        movieList: PropTypes.array.isRequired
     }).isRequired
 };
 
